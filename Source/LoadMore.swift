@@ -46,10 +46,10 @@ public class LoadMoreView: UIView {
     private var action: (() -> ()) = {}
 
 
-    convenience init(action: @escaping (() -> ()), frame: CGRect) {
+    convenience init(action: @escaping (() -> ()), frame: CGRect,activityIndicatorViewStyle:UIActivityIndicatorView.Style = .gray) {
         var bounds = frame
         bounds.origin.y = 0
-        let animator = LoadMoreAnimator(frame: bounds)
+        let animator = LoadMoreAnimator(frame: bounds,style: activityIndicatorViewStyle)
         self.init(frame: frame, animator: animator)
         self.action = action
         addSubview(animator)

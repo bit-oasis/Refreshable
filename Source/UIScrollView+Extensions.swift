@@ -27,11 +27,11 @@ public extension UIScrollView {
     }
 
     // Add pull to refresh view with default animator
-    func addPullToRefresh(action: @escaping (() -> ())) {
+    func addPullToRefresh(activityIndicatorViewStyle:UIActivityIndicatorView.Style = .gray,action: @escaping (() -> ())) {
         let origin = CGPoint(x: 0, y: -pullToRefreshDefaultHeight)
         let size = CGSize(width: self.frame.size.width, height: pullToRefreshDefaultHeight)
         let frame = CGRect(origin: origin, size: size)
-        pullToRefreshView = PullToRefreshView(action: action, frame: frame)
+        pullToRefreshView = PullToRefreshView(action: action, frame: frame,activityIndicatorViewStyle: activityIndicatorViewStyle)
 
         addSubview(pullToRefreshView!)
     }
@@ -71,10 +71,10 @@ public extension UIScrollView {
     }
 
     // Add load more view with default animator
-    func addLoadMore(action: @escaping (() -> ())) {
+    func addLoadMore(activityIndicatorViewStyle:UIActivityIndicatorView.Style = .gray,action: @escaping (() -> ())) {
         let size = CGSize(width: self.frame.size.width, height: loadMoreDefaultHeight)
         let frame = CGRect(origin: .zero, size: size)
-        loadMoreView = LoadMoreView(action: action, frame: frame)
+        loadMoreView = LoadMoreView(action: action, frame: frame,activityIndicatorViewStyle: activityIndicatorViewStyle)
         loadMoreView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
 
         addSubview(loadMoreView!)

@@ -12,6 +12,11 @@ open class PullToRefreshAnimator: UIView, PullToRefreshDelegate {
 
     open var spinner = UIActivityIndicatorView(style: .gray)
 
+    convenience init(frame: CGRect,style:UIActivityIndicatorView.Style = .gray) {
+        self.init(frame:frame)
+        spinner.style = style
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         autoresizingMask = .flexibleWidth

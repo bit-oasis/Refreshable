@@ -28,7 +28,9 @@ public protocol PullToRefreshDelegate {
 }
 
 public class PullToRefreshView: UIView {
-
+    
+    public var activityIndicatorViewStyle:UIActivityIndicatorView.Style = .gray
+    
     var isLoading: Bool = false {
         didSet {
             if isLoading != oldValue {
@@ -50,10 +52,10 @@ public class PullToRefreshView: UIView {
     private var action: (() -> ()) = {}
 
 
-    convenience init(action: @escaping (() -> ()), frame: CGRect) {
+    convenience init(action: @escaping (() -> ()), frame: CGRect,activityIndicatorViewStyle:UIActivityIndicatorView.Style = .gray) {
         var bounds = frame
         bounds.origin.y = 0
-        let animator = PullToRefreshAnimator(frame: bounds)
+        let animator = PullToRefreshAnimator(frame: bounds,style: activityIndicatorViewStyle)
         self.init(frame: frame, animator: animator)
         self.action = action
         addSubview(animator)
